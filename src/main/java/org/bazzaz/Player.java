@@ -6,13 +6,20 @@ import javafx.scene.shape.Shape;
 public class Player implements GameObject {
 
     private Shape shape = null;
+    private final Collider collider;
     public Player() {
         this.shape = new Rectangle(100, 100);
+        this.collider = new Collider(100, 100);
     }
 
     public void move(Movement move) {
         this.shape.setTranslateX(this.shape.getTranslateX() + move.getVelocityX());
         this.shape.setTranslateY(this.shape.getTranslateY() + move.getVelocityY());
+    }
+
+    public void moveTo(Movement movement) {
+        this.shape.setTranslateX(movement.getVelocityX());
+        this.shape.setTranslateY(movement.getVelocityY());
     }
 
     @Override
@@ -25,8 +32,7 @@ public class Player implements GameObject {
         // this.move(1, 0);
     }
 
-    public void moveTo(Movement movement) {
-        this.shape.setTranslateX(movement.getVelocityX());
-        this.shape.setTranslateY(movement.getVelocityY());
+    public Collider getCollider() {
+        return collider;
     }
 }

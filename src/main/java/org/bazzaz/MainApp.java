@@ -24,7 +24,7 @@ public class MainApp extends Application {
     };
     private void setControls() {
         scene.setOnMouseMoved((MouseEvent mouseEvent) -> {
-            Movement movement = new Movement(mouseEvent.getSceneX(), mouseEvent.getSceneY());
+            Movement movement = new Movement(mouseEvent.getSceneX() - player.getCollider().width / 2, mouseEvent.getSceneY() - player.getCollider().height / 2);
             player.moveTo(movement);
         });
         scene.setOnKeyPressed((KeyEvent keyEvent) -> {
